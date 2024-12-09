@@ -51,17 +51,12 @@ from newsapp.models import Author, Category, Post, Comment
 
 9. Вывести username и рейтинг лучшего пользователя 
 (применяя сортировку и возвращая поля первого объекта).
-	best_author = Author.objects.order_by('-rating').first()
-	print(f"Лучший пользователь: {best_author.user.username}, Рейтинг: {best_author.rating}")
+	Author.objects.order_by('-rating').values('user__username', 'rating').first()
 
 10. Вывести дату добавления, username автора, рейтинг, заголовок и превью лучшей статьи, 
 основываясь на лайках/дислайках к этой статье.
-	best_post = Post.objects.order_by('-rating').first()
-	print(f"Дата добавления: {best_post.created_at}")
-	print(f"Автор: {best_post.author.user.username}")
-	print(f"Рейтинг: {best_post.rating}")
-	print(f"Заголовок: {best_post.title}")
-	print(f"Превью: {best_post.preview()}")
+
+	Post.objects.order_by('-rating').values('created_at', 'author__user__username', 'rating', 'title', 'post_type').first() 
 
 11. Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
 	comments = Comment.objects.filter(post=best_post)

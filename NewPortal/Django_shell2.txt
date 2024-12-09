@@ -1,0 +1,14 @@
+python manage.py shell
+
+from django.contrib.auth.models import User
+from newsapp.models import Author, Category, Post
+
+1. Создать пользователя.
+	user3 = User.objects.create_user('user3', password='password1')
+
+2. Создать объект модели Author, связанные с пользователями.
+	author3 = Author.objects.create(user=user3, rating=0)
+
+3. Добавить 1 статью и 1 новость.
+	post4 = Post.objects.create(author=author1, post_type='статья', title='Политика сегодня', text='Нехороший человек — редиска!', rating=0)
+
