@@ -12,3 +12,6 @@ from newsapp.models import Author, Category, Post
 3. Добавить 1 статью и 1 новость.
 	post4 = Post.objects.create(author=author1, post_type='статья', title='Политика сегодня', text='Нехороший человек — редиска!', rating=0)
 
+	category2 = Category.objects.get(name='Политика') 
+	category3 = Category.objects.get(name='Образование')
+	post4.categories.add(category2, category3)
