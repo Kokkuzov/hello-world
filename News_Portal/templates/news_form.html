@@ -1,0 +1,10 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+    <h1>Создание новости</h1>
+    <form method="post">
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+<a href="{% url 'news' %}">Перейти к списку новостей</a>
+{% endblock %}
